@@ -1,0 +1,17 @@
+@article{BudynZi2004,
+author = {Budyn, E. and Zi, G. and Mo\"{e}s, N. and Belytschko, T.},
+doi = {10.1002/nme.1130},
+file = {:C$\backslash$:/Users/Danas/Documents/Mendeley Archive/Budyn et al/2004/International Journal for Numerical Methods in Engineering/A method for multiple crack growth in brittle materials without remeshing\_Budyn et al.\_2004.pdf:pdf},
+issn = {0029-5981},
+journal = {International Journal for Numerical Methods in Engineering},
+keywords = {brittle material,coale-,energy,finite elements,fracture,intersections,junction,junctions,multiple cracks,percolation,scence,second variation of the,stability,unit cells},
+mendeley-groups = {\_XFEM,MY PAPERS/Efficient implementation of XFEM in Matlab for multiple crack growth simulations in 2D,\_XFEM/XFEM (crack intersections),\_FRACTURE/crack growth/multiple},
+mendeley-tags = {intersections,junctions},
+month = nov,
+number = {10},
+pages = {1741--1770},
+title = {{A method for multiple crack growth in brittle materials without remeshing}},
+url = {http://doi.wiley.com/10.1002/nme.1130},
+volume = {61},
+year = {2004}
+}

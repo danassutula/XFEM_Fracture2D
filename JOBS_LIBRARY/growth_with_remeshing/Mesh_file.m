@@ -1,0 +1,58 @@
+
+%==========================================================================
+% Mesh File
+%==========================================================================
+
+
+%--------------------------------------------------------------------------
+% What will be expected from the mesh file
+%--------------------------------------------------------------------------
+%
+%   mNdCrd - node cooridnates;
+%            size = n_nodes x 2
+%   mLNodS - element connectivities/topology;
+%            size = n_elements x n_element_nodes
+%   vElPhz - element material/phase tag;
+%            size = n_elements x 1; max = n_materials
+%   cBnNod - boundary nodes;
+%            cell size = n_boundaries x 1; 
+%            cell member size = n_boundary_nodes x 1, or
+%            cell member size = n_boundary_lines x 2
+%   cBnCrd - alternative to cBnNod;
+%            boundary node coordinates; 
+%            cell size = n_boundaries x 1;
+%            cell member size = n_boundary_nodes x 2
+%
+%--------------------------------------------------------------------------
+
+
+%--------------------------------------------------------------------------
+% Initialize
+%--------------------------------------------------------------------------
+
+mesh_FileRoot = [job_srcdir,'/Input_Mesh'];
+mesh_FileType = 'gmsh'; % (only gmsh version-1)
+
+mesh_FileName = []; % please, specify below
+mesh_FilePath = []; % (concat.'ed mesh file)
+
+%--------------------------------------------------------------------------
+% Specify mesh file name
+%--------------------------------------------------------------------------
+
+mesh_FileName = 'SquarePlate_coarse_T3.msh';
+% mesh_FileName = 'SquarePlate_medium_T3.msh';
+% mesh_FileName = 'SquarePlate_fine_T3.msh';
+
+%--------------------------------------------------------------------------
+% Verify existance of mesh file
+%--------------------------------------------------------------------------
+
+mesh_FilePath = [mesh_FileRoot,'/',mesh_FileName];
+
+if ~exist(mesh_FilePath,'file')
+    error('ErrorUserInput:meshFileNotFound',...
+        'Unable to find mesh file.\n')
+end
+
+%--------------------------------------------------------------------------
