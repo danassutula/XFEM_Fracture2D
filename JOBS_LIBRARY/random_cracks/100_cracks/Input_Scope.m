@@ -107,13 +107,13 @@ save_CracksEnd = 1; % saves initial and final crack distributions
 save_CracksAll = 1; % cracks and relevant crack data at every step
 save_StressAll = 0; % stress tensor at Gauss points at every step
 save_DisplcAll = 0; % GP's positions and displacements at every step
-save_StateVarb = 1; % state variables: Es, Pi, Gs, SIF, ...
+save_StateVarb = 0; % state variables: Es, Pi, Gs, SIF, ...
 save_Roughness = 0; % post-split fracture roughness
 
 
 
 % Plotting (during):
-plot_Mesh     = 1; % plot mesh with initial cracks
+plot_Mesh     = 0; % plot mesh with initial cracks
 plot_Domain   = 0; % plot domain when plotting cracks
 plot_Cracks   = 1; % plot cracks at every time step
 plot_Enriched = 0; % enriched elements
@@ -132,7 +132,7 @@ plot_Roughness = 0; % fracture surface roughness
 
 
 % Movies:
-mov_Cracks   = 1; % fracture evolution movie
+mov_Cracks   = 0; % fracture evolution movie
 mov_VonMises = 0; % stress evolution movie
 mov_Deformed = 0; % deformation evolution movie
 

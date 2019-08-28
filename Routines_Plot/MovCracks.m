@@ -46,9 +46,19 @@ end
 
 % PlotDomain;
 
-% easily to initialize
-sMovie = getframe(h);
 fprintf('\nMovie frames:\n')
+
+movieWriteTime = clock;
+movieWriteTime = ['_',num2str(movieWriteTime(4)),...
+    '_',num2str(movieWriteTime(5))];
+
+sMovie = VideoWriter([path_savedMov,...
+    'mov_CrackGrowth',movieWriteTime,'.avi']);
+
+sMovie.FrameRate = fps;
+sMovie.Quality = 100;
+
+open(sMovie);
 
 for i_frm = 1:iStep+1
     
@@ -63,22 +73,20 @@ for i_frm = 1:iStep+1
     
     title({'Fracture process',num2str([i_frm,iStep],'step %i/%i')});
     
-%     for j = 1:length(cCkCrd)
-%         plot(cCkCrd{j}(:,1),cCkCrd{j}(:,2),'-r','linewidth',0.2)
-%         % scatter(cCkCrd{j}(:,1),cCkCrd{j}(:,2),2,'k','fill')
-%     end
-    
     set(gca,'FontSize',szfnt);
-    sMovie(i_frm) = getframe(gcf);
+    
+    % sMovie(i_frm) = getframe(gcf);
+    currentMovieFrame = getframe(gcf);
+    writeVideo(sMovie,currentMovieFrame.cdata);
     
 end
 
-tmp = clock; tmp = ['_',num2str(tmp(4)),'_',num2str(tmp(5))];
-movie2avi(sMovie(1:i_frm),[path_savedMov,'mov_CrackGrowth',tmp],...
-    'fps',fps,'compression','none')
+close(sMovie)
 
-% clear var.
 clear sMovie
+
+fprintf('\nMovie done.\n')
+
 close(h)
 
 %--------------------------------------------------------------------------

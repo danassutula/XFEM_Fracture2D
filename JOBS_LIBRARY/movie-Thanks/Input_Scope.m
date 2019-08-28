@@ -103,11 +103,11 @@ with_Roughness = 0; % compute fracture surface roughness; ...
 
 
 % Saving variables (in 'path_results/job_title/job_caseID/basic')
-save_CracksEnd = 1; % saves initial and final crack distributions
-save_CracksAll = 1; % cracks and relevant crack data at every step
-save_StressAll = 1; % stress tensor at Gauss points at every step
+save_CracksEnd = 0; % saves initial and final crack distributions
+save_CracksAll = 0; % cracks and relevant crack data at every step
+save_StressAll = 0; % stress tensor at Gauss points at every step
 save_DisplcAll = 0; % GP's positions and displacements at every step
-save_StateVarb = 1; % state variables: Es, Pi, Gs, SIF, ...
+save_StateVarb = 0; % state variables: Es, Pi, Gs, SIF, ...
 save_Roughness = 0; % post-split fracture roughness
 
 
@@ -119,21 +119,21 @@ plot_Cracks   = 1; % plot cracks at every time step
 plot_Enriched = 0; % enriched elements
 plot_Displace = 0; % displacement contours
 plot_Deformed = 0; % Gauss points after deformation
-plot_VonMises = 0; % von Mises stress
+plot_VonMises = 1; % von Mises stress
 plot_VmsContr = 0; % von Mises contours
 
 
 
 % Plotting (final):
-plot_Potential = 1; % potential energy (Pi)
-plot_DissipGlb = 1; % dissipation rate (-dPi/dA)
+plot_Potential = 0; % potential energy (Pi)
+plot_DissipGlb = 0; % dissipation rate (-dPi/dA)
 plot_Roughness = 0; % fracture surface roughness
 
 
 
 % Movies:
 mov_Cracks   = 0; % fracture evolution movie
-mov_VonMises = 1; % stress evolution movie
+mov_VonMises = 0; % stress evolution movie
 mov_Deformed = 0; % deformation evolution movie
 
 

@@ -136,9 +136,6 @@ movieWriteTime = clock;
 movieWriteTime = ['_',num2str(movieWriteTime(4)),...
     '_',num2str(movieWriteTime(5))];
 
-% movie2avi(sMovie(1:ii),[path_savedMov,'mov_VonMises',tmp],...
-%    'fps',fps) % ,'compression','none'
-
 sMovie = VideoWriter([path_savedMov,...
     'mov_VonMises',movieWriteTime,'.avi']);
 
@@ -222,7 +219,6 @@ end
 
 close(sMovie)
 
-% clear sMovie
 clear vMises mGsCrd mGsDsp mGsDfm
 clear ss_maxmax ss_maxmin ss_minmax ss_minmin
 clear ss_i q_std q_enr abox m

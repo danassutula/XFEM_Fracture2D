@@ -1,11 +1,3 @@
 .*
 
-JOBS_RESULTS/
-supplementary/
-
-COPYING
-COPYING.LESSER
-COPYRIGHT.txt
-
-
 !.gitignore
