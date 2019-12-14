@@ -1,3 +1,5 @@
 .*
 
 !.gitignore
+
+JOBS_RESULTS/
