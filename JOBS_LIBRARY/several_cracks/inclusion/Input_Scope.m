@@ -18,7 +18,7 @@ mesh_EnriSize = 'normal'; % tip enrichment radius: 'small', 'normal' or 'big'
 
 
 % Crack growth criteria:
-kind_LawDir = 'maxhoop'; % maxhoop; energy; symmetry;
+kind_LawDir = 'energy'; % maxhoop; energy; symmetry;
 kind_LawCrt = 'tension'; % tension; energy; J-int; eliptic; Hayashi; Nuismer;
 kind_GrwCrt = 'all'; % maximum; symmetric; critical; all; custom;
 
@@ -43,16 +43,16 @@ with_AdpEnr = 0; % adjust tip enrichment radius based on local mesh size
 
 
 % Energy minimization:
-with_GLwInc = 0; % use brute-force energy minimisation based on crack tip Gs  
-with_GLwDir = 0; % use energy minimisation to determine crack growth directions
+with_GLwInc = 1; % use brute-force energy minimisation based on crack tip Gs
+with_GLwDir = 1; % use energy minimisation to determine crack growth directions
 with_DirAvg = 0; % use bi-section method to get the final increment direction
 
 if with_GLwDir
-    
+
     nIter_dir = 5; % max iterations allowed for tip increment direction
     dBetaTol_iterDir = (0.01*pi/180) * 1; % tol. for stopping iterations
     dBetaMin_iterDir = (0.01*pi/180) * 1; % min tip kink (with_DirAvg==1)
-    
+
 end
 
 if with_GLwInc
@@ -72,17 +72,17 @@ with_RfnInc = 0; % addaptive re-meshing: kink dependent
 with_RfnXrs = 0; % addaptive re-meshing: pre-intersection
 
 if with_RfnInc || with_RfnXrs
-    
+
     nRefine_inc = 1; % max times to refine crack increment/tip-mesh
     nRefine_xrs = 3; % times to refine before intersection (>=nRefine_inc)
-    
+
     dBetaMin_mshFine = (5.0*pi/180) * 0; % refining if kink greater than
     dBetaMax_mshCors = (1.0*pi/180) * 0; % coarsening if kink smaller than
-    
+
     % if with_RfnXrs == 0
     %     nRefine_xrs = nRefine_inc;
     % end % (will be set by default)
-    
+
 end
 
 with_BndXrs = 1; % check for crack-boundary intersections
@@ -96,7 +96,7 @@ end
 
 
 % Supplementary:
-with_JIntegral = 1; % crack tip energy release rate: 'Ji' 
+with_JIntegral = 1; % crack tip energy release rate: 'Ji'
 with_Roughness = 0; % compute fracture surface roughness; ...
 % physically meaningful provided fracture percolation happens
 
@@ -119,7 +119,7 @@ plot_Cracks   = 1; % plot cracks at every time step
 plot_Enriched = 1; % enriched elements
 plot_Displace = 0; % displacement contours
 plot_Deformed = 0; % Gauss points after deformation
-plot_VonMises = 1; % von Mises stress
+plot_VonMises = 0; % von Mises stress
 plot_VmsContr = 0; % von Mises contours
 
 
