@@ -17,10 +17,17 @@ mesh_EnriSize = 'normal'; % tip enrichment radius: 'small', 'normal' or 'big'
 
 
 
-% Crack growth criteria:
-kind_LawDir = 'energy'; % maxhoop; energy; symmetry;
+% Growth direction criterion
+kind_LawDir = 'maxhoop'; % maxhoop; energy; symmetry;
+
+% Crack extension criterion
 kind_LawCrt = 'tension'; % tension; energy; J-int; eliptic; Hayashi; Nuismer;
-kind_GrwCrt = 'all'; % maximum; symmetric; critical; all; custom;
+
+% This is a more pragmatic control of the crack extension criterion. Parameter
+% `kind_GrwCrt` can relax the strictness of the crack extension criterion in
+% order to also grow other cracks that may theoretically be less favourable.
+kind_GrwCrt = 'maximum'; % maximum; symmetric; critical; all; custom;
+% kind_GrwCrt = 'symmetric'; % maximum; symmetric; critical; all; custom;
 
 if strcmpi(kind_GrwCrt,'custom')
     % lowers threshold for growth (useful if with_GLwInc == 1)
@@ -31,7 +38,7 @@ end
 
 % Numerical treatment:
 with_Update = 1; % efficient updating of equations
-with_RdoStd = 1; % re-assemble std. stiff. mat., i.e. no recycling
+with_RdoStd = 1; % re-assemble std. stiff. mat., i.e. no recycling between jobs
 with_MapTyp = 1; % (1) local mapping (faster), (2) global mapping (see note)
 
 % n.b. global mapping should be used if cracks cut non-rectangular Q4;
@@ -43,8 +50,8 @@ with_AdpEnr = 0; % adjust tip enrichment radius based on local mesh size
 
 
 % Energy minimization:
-with_GLwInc = 1; % use brute-force energy minimisation based on crack tip Gs
-with_GLwDir = 1; % use energy minimisation to determine crack growth directions
+with_GLwInc = 0; % use brute-force energy minimisation based on crack tip Gs
+with_GLwDir = 0; % use energy minimisation to determine crack growth directions
 with_DirAvg = 0; % use bi-section method to get the final increment direction
 
 if with_GLwDir
@@ -118,7 +125,7 @@ plot_Domain   = 1; % plot domain when plotting cracks
 plot_Cracks   = 1; % plot cracks at every time step
 plot_Enriched = 1; % enriched elements
 plot_Displace = 0; % displacement contours
-plot_Deformed = 0; % Gauss points after deformation
+plot_Deformed = 1; % Gauss points after deformation
 plot_VonMises = 0; % von Mises stress
 plot_VmsContr = 0; % von Mises contours
 

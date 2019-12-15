@@ -52,14 +52,16 @@ cPrLod_var  = {}; % list (cell) of arguments for the pre-load function
 % Displacement fixities and values
 %--------------------------------------------------------------------------
 
-% vFxBnd = [1,3];
-vFxBnd = [5,6];
+vFxBnd = [1, 3, 5];
 
-mFxDim(1,:) = [ 1, 1];
+mFxDim(1,:) = [ 0, 1];
 mFxVal(1,:) = [ 0, 0];
 
 mFxDim(2,:) = [ 0, 1];
-mFxVal(2,:) = [ 0, 0];
+mFxVal(2,:) = [ 0, 0.1];
+
+mFxDim(3,:) = [ 1, 1];
+mFxVal(3,:) = [ 0, 0];
 
 %--------------------------------------------------------------------------
 
@@ -74,7 +76,7 @@ mFxVal(2,:) = [ 0, 0];
 % Boundary tractions
 %--------------------------------------------------------------------------
 
-vLdBnd = [1,3]; % nodes below and above end-crack (RHS)
+vLdBnd = []; % nodes below and above end-crack (RHS)
 
 mBnLod(1,:) = [0,-0.1];
 mBnLod(2,:) = [0, 0.1];
