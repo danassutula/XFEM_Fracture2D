@@ -10,11 +10,6 @@ function [e0_xpt,s0_xpt] = Input_BC_preload(x,input_args)
 
 % x = element-center coordinates where pre-load is computed, size(x)=[n,2]
 
-% EXAMPLE
-% job_preload_args{1} = job_BC_preload; % pre-strain tensor
-% job_preloadr_args{2} = 0.5*(job_domain_yi(4)+job_domain_yi(5));
-% job_preload_args{3} = job_domain_yi(5)-job_domain_yi(4)];
-
 %--------------------------------------------------------------------------
 
 
@@ -23,7 +18,7 @@ function [e0_xpt,s0_xpt] = Input_BC_preload(x,input_args)
 % Simple case: a single pre-stress/strain for the whole domain
 %--------------------------------------------------------------------------
 
-if length(input_args) == 1
+if length(input_args) == 1 && length(input_args{1}(:)) == 3
     e0_xpt = repmat(input_args{1}(:),1,size(x,1));
     s0_xpt = [];
     return
@@ -33,10 +28,10 @@ end
 % Sort input arguments (user-adapted)
 %--------------------------------------------------------------------------
 
-% layer pre-strain: [exx_i,eyy_i,exy_i; ...]
+% layer pre-strain: [exx_i,eyy_i,exy_i; ...]'
 e0_lay = input_args{1};
 
-% layer pre-stress: [sxx_i,syy_i,sxy_i; ...]
+% layer pre-stress: [sxx_i,syy_i,sxy_i; ...]'
 s0_lay = [];
 
 % position of pre-load layers
