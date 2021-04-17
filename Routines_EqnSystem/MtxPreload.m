@@ -41,20 +41,36 @@ x_mid = x_mid/nnode;
 % call pre-load function by handle
 [e0,s0] = hPrLod(x_mid,cPrLod_var); 
 
+nElems = size(mLNodS, 1);
+mPrLod = zeros(3, nElems);
+
 % build element pre-load matrix
 if any(e0(:)~=0) % && ~isempty(e0)
-    if min(size(e0))==1; e0 = e0(:);
-         mPrLod = e0(:,ones(nelem,1));
-    else mPrLod = e0; end
-    for i = 1:nelem
-        mPrLod(:,i) = cDMatx{vElPhz(idelm(i))}*mPrLod(:,i);
+    if min(size(e0)) == 1 
+        e0 = e0(:);
+        for i = 1:nelem
+            mPrLod(:, i) = e0;
+        end
+    else
+        for i = 1:nelem
+            mPrLod(:, idelm(i)) = e0(:, i);
+        end
+    end
+    % Convert pre-strain to equivalent pre-stress
+    for i = 1:nElems
+        mPrLod(:, i) = cDMatx{vElPhz(i)} * mPrLod(:,i);
     end
 elseif any(s0(:)~=0) % && ~isempty(s0)
-    if min(size(s0))==1; s0 = s0(:);
-         mPrLod = s0(:,ones(nelem,1));
-    else mPrLod = s0; end
-else
-    mPrLod = zeros(3,nelem);
+    if min(size(s0)) == 1
+        s0 = s0(:);
+        for i = 1:nelem
+            mPrLod(:, i) = s0;
+        end
+    else 
+        for i = 1:nelem
+            mPrLod(:, idelm(i)) = s0(:, i);
+        end
+    end
 end
 
 end
